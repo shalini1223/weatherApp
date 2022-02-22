@@ -16,9 +16,9 @@ app.set("views", viewPath);
 
 //setup static directory
 app.use(express.static(publicDirectoryPath));
-
 hbs.registerPartials(partialPath);
 
+// api to find weather
 app.get('/api/weather', function (req, res) {
     if (!req.query.city) {
         res.status(400).send("please enter city");
@@ -31,6 +31,7 @@ app.get('/api/weather', function (req, res) {
     });
 });
 
+//rendering pages
 app.get("/help", function (req, res) {
     res.render("help", {
         title: "Help Page"
